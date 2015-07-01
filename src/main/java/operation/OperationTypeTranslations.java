@@ -22,13 +22,14 @@ public class OperationTypeTranslations {
 		getOperationtranslations().put(OperationType.COMMENT_AVERAGE_LENGTH_PER_USER, "Œrednia d³ugoœæ postu(komentuj¹cego) na u¿ytkownika");
 		getOperationtranslations().put(OperationType.COMMENT_AVERAGE_LENGTH, "Œrednia d³ugoœæ postu(komentuj¹cego)");
 		getOperationtranslations().put(OperationType.COMMENT_LENGTH_SUM, "Suma d³ugoœci postów(komentuj¹cych)");
+		getOperationtranslations().put(OperationType.COMMENT_AVERAGE_COUNT_PER_POST_PER_USER, "Srednia ilosc komentarzy na post(na uzytkownika)");
 		getOperationtranslations().put(OperationType.TITLE_COUNT_PER_USER, "Liczba postów(tytu³owych) per u¿ytkownik");
 		getOperationtranslations().put(OperationType.TITLE_SUM, "Liczba postów(tytu³owych)");
 		getOperationtranslations().put(OperationType.TITLE_AVERAGE_COUNT, "Œrednia liczba postów(tytu³owych)");
 		getOperationtranslations().put(OperationType.TITLE_AVERAGE_LENGTH_PER_USER, "Œrednia d³ugoœæ postu(tytu³owego) na u¿ytkownika");
 		getOperationtranslations().put(OperationType.TITLE_AVERAGE_LENGTH, "Œrednia d³ugoœæ postu(tytu³owego)");
 		getOperationtranslations().put(OperationType.TITLE_LENGTH_SUM, "Suma d³ugoœci postów(tytu³owych)");
-		
+
 		for(Map.Entry<OperationType, String> entry : operationTranslations.entrySet()){
 			operationTranslationsReversed.put(entry.getValue(), entry.getKey());
 		}

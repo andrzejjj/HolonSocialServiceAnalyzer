@@ -2,25 +2,7 @@ package operation;
 
 import java.util.Date;
 
-import operation.factory.CommentAverageCountOperationFactory;
-import operation.factory.CommentAverageLengthOperationFactory;
-import operation.factory.CommentAverageLengthPerUserOperationFactory;
-import operation.factory.CommentCountPerUserOperationFactory;
-import operation.factory.CommentLengthSumOperationFactory;
-import operation.factory.CommentSumOperationFactory;
-import operation.factory.PostAverageCountOperationFactory;
-import operation.factory.PostAverageLengthOperationFactory;
-import operation.factory.PostAverageLengthPerUserOperationFactory;
-import operation.factory.PostCountPerUserOperationFactory;
-import operation.factory.PostLengthSumOperationFactory;
-import operation.factory.PostSumOperationFactory;
-import operation.factory.TitleAverageCountOperationFactory;
-import operation.factory.TitleAverageLengthOperationFactory;
-import operation.factory.TitleAverageLengthPerUserOperationFactory;
-import operation.factory.TitleCountPerUserOperationFactory;
-import operation.factory.TitleLengthSumOperationFactory;
-import operation.factory.TitleSumOperationFactory;
-import operation.factory.UserCountOperationFactory;
+import operation.factory.*;
 import operation.reducerImpl.BaseReducer;
 
 public abstract class OperationFactory {
@@ -52,6 +34,8 @@ public abstract class OperationFactory {
 			return new CommentAverageLengthOperationFactory();
 		case COMMENT_LENGTH_SUM:
 			return new CommentLengthSumOperationFactory();
+		case COMMENT_AVERAGE_COUNT_PER_POST_PER_USER:
+			return new CommentAverageCountPerPostPerUserFactory();
 		case TITLE_COUNT_PER_USER:
 			return new TitleCountPerUserOperationFactory();
 		case TITLE_SUM:
