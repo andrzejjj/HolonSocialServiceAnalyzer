@@ -43,7 +43,6 @@
 				<version>8.1.2</version>
 				<configuration>
 					<mainClass>hssa.Main</mainClass>
-					<nativeInstallers />
 				</configuration>
 			</plugin>
 		</plugins>
