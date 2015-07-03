@@ -2,6 +2,7 @@ package operation;
 
 public enum OperationType {
 	USER_COUNT,
+	USER_WITHOUT_COMMENTS,
 	POST_COUNT_PER_USER,
 	POST_SUM,
 	POST_AVERAGE_COUNT,

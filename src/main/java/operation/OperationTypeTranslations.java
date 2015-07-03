@@ -10,6 +10,7 @@ public class OperationTypeTranslations {
 	
 	static {
 		getOperationtranslations().put(OperationType.USER_COUNT, "Liczba u¿ytkowników");
+		getOperationtranslations().put(OperationType.USER_WITHOUT_COMMENTS, "U¿ytkownicy bez komentarzy");
 		getOperationtranslations().put(OperationType.POST_COUNT_PER_USER, "Liczba postów per u¿ytkownik");
 		getOperationtranslations().put(OperationType.POST_SUM, "Liczba postów");
 		getOperationtranslations().put(OperationType.POST_AVERAGE_COUNT, "Œrednia liczba postów");

@@ -11,6 +11,8 @@ public abstract class OperationFactory {
 		switch (operationType) {
 		case USER_COUNT:
 			return new UserCountOperationFactory();
+		case USER_WITHOUT_COMMENTS:
+			return new UserWithoutCommentsFactory();
 		case POST_COUNT_PER_USER:
 			return new PostCountPerUserOperationFactory();
 		case POST_SUM:
