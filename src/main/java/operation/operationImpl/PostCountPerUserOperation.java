@@ -10,7 +10,7 @@ public class PostCountPerUserOperation extends BaseOperation {
 		MessageHolder messageHolder = new MessageHolder();
 		setUser(userInformation, messageHolder);
 		int count = userInformation.getTitlePosts().size() + userInformation.getCommentPosts().size();
-		messageHolder.setDoubleValue(count);
+		messageHolder.setValue(new Double(count));
 		return messageHolder;
 	}
 

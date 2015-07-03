@@ -9,7 +9,7 @@ public class UserCountOperation extends BaseOperation {
 	public MessageHolder execute(UserInformation userInformation) {
 		MessageHolder messageHolder = new MessageHolder();
 		setUser(userInformation, messageHolder);
-		messageHolder.setDoubleValue(1);
+		messageHolder.setValue(new Double(1));
 		
 		return messageHolder;
 	}

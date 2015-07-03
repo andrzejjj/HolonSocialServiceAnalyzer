@@ -30,7 +30,7 @@ public class SocialAnalyzerOverviewController {
     private TableColumn<Result, String> result1Column;
     
     @FXML
-    private TableColumn<Result, Number> result2Column;
+    private TableColumn<Result, String> result2Column;
 	
 	@FXML
     private void initialize() {

@@ -4,9 +4,9 @@ import java.util.Date;
 
 import operation.Operation;
 import operation.OperationFactory;
-import operation.Reducer;
+import operation.Transformer;
 import operation.operationImpl.CommentSumOperation;
-import operation.reducerImpl.SumReducer;
+import operation.transformerImpl.SumReduceTransformer;
 
 public class CommentSumOperationFactory extends OperationFactory {
 
@@ -16,7 +16,7 @@ public class CommentSumOperationFactory extends OperationFactory {
 	}
 	
 	@Override
-	public Reducer createReducer() {
-		return new SumReducer();
+	public Transformer createTransformer() {
+		return new SumReduceTransformer();
 	}
 }

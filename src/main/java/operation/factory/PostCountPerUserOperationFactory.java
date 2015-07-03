@@ -4,7 +4,9 @@ import java.util.Date;
 
 import operation.Operation;
 import operation.OperationFactory;
+import operation.Transformer;
 import operation.operationImpl.PostCountPerUserOperation;
+import operation.transformerImpl.SortTransformer;
 
 public class PostCountPerUserOperationFactory extends OperationFactory {
 
@@ -13,4 +15,8 @@ public class PostCountPerUserOperationFactory extends OperationFactory {
 		return new PostCountPerUserOperation();
 	}
 
+	@Override
+	public Transformer createTransformer() {
+		return new SortTransformer();
+	}
 }

@@ -20,8 +20,8 @@ public class CommentAverageCountPerPostPerUserOperation implements Operation {
                             .mapToInt(titlePost -> titlePost.getComments().size())
                             .sum();
             double averageCountOfCommentsPerPost = countOfAllPostComments / userInformation.getTitlePosts().size();
-            messageHolder.setDoubleValue(averageCountOfCommentsPerPost);
-        } else messageHolder.setDoubleValue(0);
+            messageHolder.setValue(new Double(averageCountOfCommentsPerPost));
+        } else messageHolder.setValue(new Double(0));
         return messageHolder;
     }
 }

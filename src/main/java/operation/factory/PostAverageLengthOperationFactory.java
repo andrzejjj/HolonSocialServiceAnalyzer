@@ -4,9 +4,9 @@ import java.util.Date;
 
 import operation.Operation;
 import operation.OperationFactory;
-import operation.Reducer;
+import operation.Transformer;
 import operation.operationImpl.PostAverageLengthOperation;
-import operation.reducerImpl.AverageReducer;
+import operation.transformerImpl.AverageReduceTransformer;
 
 public class PostAverageLengthOperationFactory extends OperationFactory {
 
@@ -16,7 +16,7 @@ public class PostAverageLengthOperationFactory extends OperationFactory {
 	}
 	
 	@Override
-	public Reducer createReducer() {
-		return new AverageReducer();
+	public Transformer createTransformer() {
+		return new AverageReduceTransformer();
 	}
 }

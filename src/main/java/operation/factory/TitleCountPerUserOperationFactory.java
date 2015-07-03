@@ -4,7 +4,9 @@ import java.util.Date;
 
 import operation.Operation;
 import operation.OperationFactory;
+import operation.Transformer;
 import operation.operationImpl.TitleCountPerUserOperation;
+import operation.transformerImpl.SortTransformer;
 
 public class TitleCountPerUserOperationFactory extends OperationFactory {
 
@@ -13,4 +15,8 @@ public class TitleCountPerUserOperationFactory extends OperationFactory {
 		return new TitleCountPerUserOperation();
 	}
 
+	@Override
+	public Transformer createTransformer() {
+		return new SortTransformer();
+	}
 }

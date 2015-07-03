@@ -3,7 +3,8 @@ package operation;
 import java.util.Date;
 
 import operation.factory.*;
-import operation.reducerImpl.BaseReducer;
+import operation.transformerImpl.BaseTransformer;
+import operation.transformerImpl.SortTransformer;
 
 public abstract class OperationFactory {
 	public static OperationFactory getFactory(OperationType operationType) {
@@ -48,6 +49,8 @@ public abstract class OperationFactory {
 			return new TitleAverageLengthOperationFactory();
 		case TITLE_LENGTH_SUM:
 			return new TitleLengthSumOperationFactory();
+		case POPULAR_POST_PER_USER:
+			return new PopularPostPerUserFactory();
 		}
 
 		return null;
@@ -55,7 +58,7 @@ public abstract class OperationFactory {
 
 	public abstract Operation createOperation(Date from, Date to);
 	
-	public Reducer createReducer() {
-		return new BaseReducer();
+	public Transformer createTransformer() {
+		return new BaseTransformer();
 	}
 }

@@ -4,7 +4,9 @@ import java.util.Date;
 
 import operation.Operation;
 import operation.OperationFactory;
+import operation.Transformer;
 import operation.operationImpl.PostAverageLengthPerUserOperation;
+import operation.transformerImpl.SortTransformer;
 
 public class PostAverageLengthPerUserOperationFactory extends OperationFactory {
 
@@ -13,4 +15,8 @@ public class PostAverageLengthPerUserOperationFactory extends OperationFactory {
 		return new PostAverageLengthPerUserOperation();
 	}
 
+	@Override
+	public Transformer createTransformer() {
+		return new SortTransformer();
+	}
 }

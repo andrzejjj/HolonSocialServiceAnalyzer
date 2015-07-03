@@ -8,15 +8,15 @@ import javafx.beans.property.StringProperty;
 public class Result {
 	
 	private final StringProperty result1;
-	private final DoubleProperty result2;
+	private final StringProperty result2;
 	
 	public Result() {
         this(null, null);
     }
 	
-	public Result(String result1, Double result2) {
+	public Result(String result1, String result2) {
         this.result1 = new SimpleStringProperty(result1);
-        this.result2 = new SimpleDoubleProperty(result2);
+        this.result2 = new SimpleStringProperty(result2);
     }
 
 	public String getResult1() {
@@ -31,15 +31,15 @@ public class Result {
         return result1;
     }
     
-    public Double getResult2() {
+    public String getResult2() {
         return result2.get();
     }
 
-    public void setResult2(Double value) {
+    public void setResult2(String value) {
         this.result2.set(value);
     }
     
-    public DoubleProperty getResult2Property() {
+    public StringProperty getResult2Property() {
         return result2;
     }
 }

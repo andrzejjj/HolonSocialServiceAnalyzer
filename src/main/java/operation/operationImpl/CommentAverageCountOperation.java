@@ -15,7 +15,7 @@ public class CommentAverageCountOperation extends BaseOperation {
 			count += titlePost.getComments().size();
 		}
 		
-		messageHolder.setDoubleValue(count);
+		messageHolder.setValue(new Double(count));
 		
 		return messageHolder;
 	}

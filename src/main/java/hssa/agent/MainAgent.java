@@ -7,14 +7,13 @@ import hssa.domain.TitlePost;
 import hssa.dto.MessageHolder;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import operation.OperationFactory;
-import operation.Reducer;
+import operation.Transformer;
 
 import org.bson.Document;
 import org.janusproject.kernel.address.AgentAddress;
@@ -108,9 +107,8 @@ public class MainAgent extends Agent {
 
 		if (context.counter == 0) {
 			OperationFactory operationFactory = OperationFactory.getFactory(context.agentInteractionHolder.getOperation());
-			Reducer reducer = operationFactory.createReducer();
-			context.holders = reducer.reduce(context.holders);
-			Collections.sort(context.holders, new MessageHolder.DoubleComparator());
+			Transformer transformer = operationFactory.createTransformer();
+			context.holders = transformer.transform(context.holders);
 			context.agentInteractionHolder.setHolders(context.holders);
 			context.agentInteractionHolder.endInteraction();
 

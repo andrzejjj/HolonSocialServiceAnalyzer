@@ -11,7 +11,7 @@ public class TitleCountPerUserOperation extends BaseOperation {
 		setUser(userInformation, messageHolder);
 		int count = userInformation.getTitlePosts().size();
 		
-		messageHolder.setDoubleValue(count);
+		messageHolder.setValue(new Double(count));
 		return messageHolder;
 	}
 

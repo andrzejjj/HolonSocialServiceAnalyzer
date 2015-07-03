@@ -17,9 +17,9 @@ public class TitleAverageLengthPerUserOperation extends BaseOperation {
 		}
 		
 		if (count != 0)
-			messageHolder.setDoubleValue(sum/count);
+			messageHolder.setValue(new Double(sum / count));
 		else
-			messageHolder.setDoubleValue(0);
+			messageHolder.setValue(new Double(0));
 		return messageHolder;
 	}
 

@@ -1,23 +1,23 @@
-package operation.reducerImpl;
+package operation.transformerImpl;
 
 import hssa.dto.MessageHolder;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class AverageReducer extends BaseReducer {
+public class AverageReduceTransformer extends SortTransformer {
 	@Override
-	public List<MessageHolder> reduce(List<MessageHolder> results) {
+	public List<MessageHolder> transform(List<MessageHolder> results) {
 		MessageHolder messageHolder = new MessageHolder();
 		
 		messageHolder.setUser("œrednia");
 		double sum = 0;
 		for(MessageHolder result : results)
-			sum += result.getDoubleValue();
+			sum += (Double)result.getValue();
 		if (results.size() != 0)
-			messageHolder.setDoubleValue(sum/results.size());
+			messageHolder.setValue(new Double(sum / results.size()));
 		else
-			messageHolder.setDoubleValue(0);
+			messageHolder.setValue(new Double(0));
 			
 		return Arrays.asList(messageHolder);
 	}

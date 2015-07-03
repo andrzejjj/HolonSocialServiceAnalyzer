@@ -57,8 +57,8 @@ public class AgentManager {
 		
 		for(MessageHolder messageHolder : agentInteractionHolder.getHolders()) {
 			String result1 = messageHolder.getUser().toString();
-			Double result2 = messageHolder.getDoubleValue();
-			results.add(new Result(result1 , result2));
+			Object result2 = messageHolder.getValue();
+			results.add(new Result(result1 , result2.toString()));
 		}
 		
 		return results;
