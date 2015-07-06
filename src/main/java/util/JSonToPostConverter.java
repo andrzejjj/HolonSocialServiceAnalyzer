@@ -53,13 +53,7 @@ public class JSonToPostConverter {
 		commentPost.setContent(doc.get("content").toString());
 		commentPost.setReceiver(doc.get("receiver").toString());
 		
-		//String dateString = doc.get("created").toString();
-		Date date = null;
-//		try {
-//			date = formatter.parse(dateString);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
+		Date date = (Date) doc.get("date");
 		commentPost.setCreationDate(date);
 			
 		return commentPost;
