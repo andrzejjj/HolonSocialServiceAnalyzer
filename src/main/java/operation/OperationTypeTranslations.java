@@ -31,6 +31,7 @@ public class OperationTypeTranslations {
 		getOperationtranslations().put(OperationType.TITLE_AVERAGE_LENGTH, "Œrednia d³ugoœæ postu(tytu³owego)");
 		getOperationtranslations().put(OperationType.TITLE_LENGTH_SUM, "Suma d³ugoœci postów(tytu³owych)");
 		getOperationtranslations().put(OperationType.POPULAR_POST_PER_USER, "Popularne posty u¿ytkowników(iloœæ komentarzy > 100)");
+		getOperationtranslations().put(OperationType.FINDING_CLIQUES, "Znajdz kliki w grafie");
 
 		for(Map.Entry<OperationType, String> entry : operationTranslations.entrySet()){
 			operationTranslationsReversed.put(entry.getValue(), entry.getKey());

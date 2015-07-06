@@ -53,6 +53,8 @@ public abstract class OperationFactory {
 			return new TitleLengthSumOperationFactory();
 		case POPULAR_POST_PER_USER:
 			return new PopularPostPerUserFactory();
+		case FINDING_CLIQUES:
+			return new FindingCliquesFactory();
 		}
 
 		return null;
