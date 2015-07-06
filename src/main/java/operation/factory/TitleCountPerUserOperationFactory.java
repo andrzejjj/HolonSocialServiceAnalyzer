@@ -12,7 +12,7 @@ public class TitleCountPerUserOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new TitleCountPerUserOperation();
+		return new TitleCountPerUserOperation(from, to);
 	}
 
 	@Override

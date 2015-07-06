@@ -12,7 +12,7 @@ public class TitleAverageLengthPerUserOperationFactory extends OperationFactory 
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new TitleAverageLengthPerUserOperation();
+		return new TitleAverageLengthPerUserOperation(from, to);
 	}
 
 	@Override

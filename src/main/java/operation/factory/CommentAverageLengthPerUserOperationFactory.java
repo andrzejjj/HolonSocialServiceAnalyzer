@@ -13,7 +13,7 @@ public class CommentAverageLengthPerUserOperationFactory extends
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new CommentAverageLengthPerUserOperation();
+		return new CommentAverageLengthPerUserOperation(from, to);
 	}
 
 	@Override

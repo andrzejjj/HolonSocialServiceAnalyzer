@@ -14,7 +14,7 @@ import java.util.Date;
 public class CommentAverageCountPerPostPerUserFactory extends OperationFactory {
     @Override
     public Operation createOperation(Date from, Date to) {
-        return new CommentAverageCountPerPostPerUserOperation();
+        return new CommentAverageCountPerPostPerUserOperation(from, to);
     }
 
     @Override

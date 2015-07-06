@@ -4,10 +4,7 @@ import hssa.agent.MainAgent;
 import hssa.dto.MessageHolder;
 import hssa.model.Result;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,9 +37,9 @@ public class AgentManager {
 		return OperationTypeTranslations.getOperationtranslations().values();
 	}
 
-	public List<Result> calculateMeasure(String friendlyName) {
+	public List<Result> calculateMeasure(String friendlyName, Date from, Date to) {
 		OperationType operation = OperationTypeTranslations.getOperationtranslationsreversed().get(friendlyName);
-		OperationCallable operationCallable = new OperationCallable(mainAgent, operation);
+		OperationCallable operationCallable = new OperationCallable(mainAgent, operation, from, to);
 		Future<AgentInteractionHolder> agentInteractionHolderFuture = executor.submit(operationCallable);
 		
 		List<Result> results = new ArrayList<Result>();

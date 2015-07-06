@@ -12,7 +12,7 @@ public class PostAverageLengthOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new PostAverageLengthOperation();
+		return new PostAverageLengthOperation(from, to);
 	}
 	
 	@Override

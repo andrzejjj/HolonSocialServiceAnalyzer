@@ -14,7 +14,7 @@ import java.util.Date;
 public class PopularPostPerUserFactory extends OperationFactory {
     @Override
     public Operation createOperation(Date from, Date to) {
-        return new PopularPostPerUserOperation();
+        return new PopularPostPerUserOperation(from, to);
     }
 
     @Override

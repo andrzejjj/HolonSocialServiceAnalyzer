@@ -4,18 +4,25 @@ import hssa.Main;
 import hssa.model.Measure;
 import hssa.model.Result;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.util.Callback;
 
 public class SocialAnalyzerOverviewController {
+
+    private static final Date minimumDateValue = new Date(Long.MIN_VALUE);
+    private static final Date maximumDateValue = new Date(Long.MAX_VALUE);
 
 	private Main mainApp;
 	
@@ -31,13 +38,22 @@ public class SocialAnalyzerOverviewController {
     
     @FXML
     private TableColumn<Result, String> result2Column;
+
+    @FXML
+    private DatePicker datePickerFrom;
+
+    @FXML
+    private DatePicker datePickerTo;
 	
 	@FXML
     private void initialize() {
 		initMeasures();
+        initDatePickers();
 		initResults();
     }
-	
+
+    private Measure lastSelectedMeasure;
+
 	private void initMeasures() {
 		
 		measureList.setCellFactory(new Callback<ListView<Measure>, ListCell<Measure>>() {
@@ -61,10 +77,29 @@ public class SocialAnalyzerOverviewController {
         });
 		
 		measureList.getSelectionModel().selectedItemProperty().addListener(
-	            (observable, oldValue, newValue) -> calculateResults(newValue));
+                new ChangeListener<Measure>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Measure> observable, Measure oldValue, Measure newValue) {
+                        lastSelectedMeasure = newValue;
+                        calculateResults(newValue, datePickerFrom.getValue(), datePickerTo.getValue());
+                    }
+                });
 	}
-	
-	private void initResults() {
+
+    private void initDatePickers() {
+        EventHandler<ActionEvent> dateRangeChangeHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (lastSelectedMeasure != null) {
+                    calculateResults(lastSelectedMeasure, datePickerFrom.getValue(), datePickerTo.getValue());
+                }
+            }
+        };
+        datePickerFrom.setOnAction(dateRangeChangeHandler);
+        datePickerTo.setOnAction(dateRangeChangeHandler);
+    }
+
+    private void initResults() {
 		result1Column.setCellValueFactory(cellData -> cellData.getValue().getResult1Property());
 		result2Column.setCellValueFactory(cellData -> cellData.getValue().getResult2Property());
 		
@@ -72,14 +107,32 @@ public class SocialAnalyzerOverviewController {
 		resultTable.setItems(resultData);
 	}
 	
-	private void calculateResults(Measure measure) {
-		List<Result> results = mainApp.getAgentManager().calculateMeasure(measure.getMeasureName());
+	private void calculateResults(Measure measure, LocalDate fromDate, LocalDate toDate) {
+        Date from =
+                fromDate != null ?
+                    convertLocalDateToDate(fromDate) :
+                    minimumDateValue;
+        Date to =
+                toDate != null ?
+                    convertLocalDateToDate(toDate) :
+                    maximumDateValue;
+        List<Result> results =
+                mainApp.getAgentManager().calculateMeasure(measure.getMeasureName(), from, to);
 		resultData.clear();
 		resultData.addAll(results);
 		resultTable.sort();
 	}
 
-	public void setMainApp(Main mainApp) {
+    private Date convertLocalDateToDate(LocalDate localDate) {
+        Date convertedDate;
+        if (localDate == null)
+            convertedDate = null;
+        else
+            convertedDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        return convertedDate;
+    }
+
+    public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
         
 		ObservableList<Measure> measureData = FXCollections.observableArrayList();

@@ -12,7 +12,7 @@ public class CommentLengthSumOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new CommentLengthSumOperation();
+		return new CommentLengthSumOperation(from, to);
 	}
 
 	@Override

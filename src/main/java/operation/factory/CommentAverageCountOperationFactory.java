@@ -12,7 +12,7 @@ public class CommentAverageCountOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new CommentAverageCountOperation();
+		return new CommentAverageCountOperation(from, to);
 	}
 	
 	@Override

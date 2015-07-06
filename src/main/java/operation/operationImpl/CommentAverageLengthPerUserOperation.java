@@ -5,7 +5,17 @@ import hssa.domain.TitlePost;
 import hssa.dto.MessageHolder;
 import operation.UserInformation;
 
+import java.util.Date;
+
 public class CommentAverageLengthPerUserOperation extends BaseOperation {
+
+	private final Date from;
+	private final Date to;
+
+	public CommentAverageLengthPerUserOperation(Date from, Date to) {
+		this.from = from;
+		this.to = to;
+	}
 
 	@Override
 	public MessageHolder execute(UserInformation userInformation) {
@@ -13,9 +23,9 @@ public class CommentAverageLengthPerUserOperation extends BaseOperation {
 		setUser(userInformation, messageHolder);
 		double sum = 0;
 		int count = 0;
-		for(TitlePost titlePost : userInformation.getTitlePosts()) {
-			count += titlePost.getComments().size();
-			for(CommentPost commentPost : titlePost.getComments())
+		for(TitlePost titlePost : userInformation.getTitlePosts(from, to)) {
+			count += titlePost.getComments(from, to).size();
+			for(CommentPost commentPost : titlePost.getComments(from, to))
 				sum += commentPost.getContent().length();
 		}
 		

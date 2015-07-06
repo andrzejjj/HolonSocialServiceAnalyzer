@@ -12,7 +12,7 @@ public class TitleSumOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new TitleSumOperation();
+		return new TitleSumOperation(from, to);
 	}
 
 	@Override

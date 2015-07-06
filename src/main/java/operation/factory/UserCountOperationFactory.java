@@ -12,7 +12,7 @@ public class UserCountOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new UserCountOperation();
+		return new UserCountOperation(from, to);
 	}
 	
 	@Override

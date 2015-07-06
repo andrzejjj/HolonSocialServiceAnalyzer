@@ -1,7 +1,9 @@
 package hssa.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TitlePost extends AbstractPost {
 	private String id;
@@ -27,6 +29,14 @@ public class TitlePost extends AbstractPost {
 	public List<CommentPost> getComments() {
 		return comments;
 	}
+
+	public List<CommentPost> getComments(Date from, Date to) {
+		return comments.stream()
+				.filter(commentPost ->
+					from.before(commentPost.getCreationDate()) && to.after(commentPost.getCreationDate()))
+				.collect(Collectors.toList());
+	}
+
 	public void setComments(List<CommentPost> comments) {
 		this.comments = comments;
 	}

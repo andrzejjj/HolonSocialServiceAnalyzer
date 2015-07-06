@@ -12,7 +12,7 @@ public class PostSumOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new PostSumOperation();
+		return new PostSumOperation(from, to);
 	}
 
 	@Override

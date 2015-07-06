@@ -12,7 +12,7 @@ public class PostCountPerUserOperationFactory extends OperationFactory {
 
 	@Override
 	public Operation createOperation(Date from, Date to) {
-		return new PostCountPerUserOperation();
+		return new PostCountPerUserOperation(from, to);
 	}
 
 	@Override

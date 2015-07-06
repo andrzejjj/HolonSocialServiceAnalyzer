@@ -6,7 +6,9 @@ import hssa.domain.TitlePost;
 import hssa.dto.MessageHolder;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import operation.Operation;
 import operation.UserInformation;
@@ -30,9 +32,25 @@ public class UserAgent extends Agent implements UserInformation {
 		public List<TitlePost> getTitlePosts() {
 			return titlePosts;
 		}
+
+		public List<TitlePost> getTitlePosts(Date from, Date to) {
+			return titlePosts
+					.stream()
+					.filter(titlePost ->
+						from.before(titlePost.getCreationDate()) && to.after(titlePost.getCreationDate()))
+					.collect(Collectors.toList());
+		}
 		
 		public List<CommentPost> getCommentPosts() {
 			return commentPosts;
+		}
+
+		public List<CommentPost> getCommentPosts(Date from, Date to) {
+			return commentPosts
+					.stream()
+					.filter(commentPost ->
+						from.before(commentPost.getCreationDate()) && to.after(commentPost.getCreationDate()))
+					.collect(Collectors.toList());
 		}
 		
 		public String getUserName() {

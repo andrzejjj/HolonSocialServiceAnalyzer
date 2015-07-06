@@ -3,17 +3,22 @@ package hssa.AgentManager;
 import hssa.dto.MessageHolder;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import operation.OperationType;
 
 public class AgentInteractionHolder {
 	private List<MessageHolder> holders;
+	private final Date from;
+	private final Date to;
 	private OperationType operation;
 	private boolean done;
 	
-	public AgentInteractionHolder(OperationType operation) {
+	public AgentInteractionHolder(OperationType operation, Date from, Date to) {
 		this.operation = operation;
+		this.from = from;
+		this.to = to;
 		holders = new ArrayList<MessageHolder>();
 		done = false;
 	}
@@ -30,7 +35,15 @@ public class AgentInteractionHolder {
 	public void setOperation(OperationType operation) {
 		this.operation = operation;
 	}
-	
+
+	public Date getFrom() {
+		return from;
+	}
+
+	public Date getTo() {
+		return to;
+	}
+
 	public synchronized void endInteraction() {
 		done = true;
 		notify();

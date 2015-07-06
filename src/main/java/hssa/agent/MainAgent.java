@@ -80,7 +80,9 @@ public class MainAgent extends Agent {
 				AgentInteractionHolder agentInteractionHolder = (AgentInteractionHolder) objectMessage
 						.getContent();
 				OperationFactory operationFactory = OperationFactory.getFactory(agentInteractionHolder.getOperation());
-				ObjectMessage sendMessage = new ObjectMessage(operationFactory.createOperation(null, null));
+				ObjectMessage sendMessage =
+						new ObjectMessage(operationFactory.createOperation(agentInteractionHolder.getFrom(),
+								                                           agentInteractionHolder.getTo()));
 				broadcastMessage(sendMessage, userAgents.values());
 				List<MessageHolder> holders = new ArrayList<MessageHolder>(
 						userAgents.size());
